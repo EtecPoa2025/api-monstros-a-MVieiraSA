@@ -25,6 +25,7 @@ app.get('/monstros', (req, res) => {
     res.json(monstros);
 });
 
+
 // --- Iniciar o Servidor ---
 
 // Faz o aplicativo Express começar a "escutar" por requisições na porta definida.
@@ -32,3 +33,21 @@ app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
     console.log(`Acesse: http://localhost:${PORT}/monstros`);
 });
+
+
+
+
+app.get ( '/monstros/random', (req, res) =>{
+
+if (monstros.length > 0) {
+    const index = Math.floor(Math.random() * monstros.length);
+    res.json(monstros[index]);
+} 
+else {
+    res.status(404).json({ erro: 'Nenhum monstro encontrado'});
+
+}
+
+}
+);
+
